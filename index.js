@@ -6,6 +6,6 @@ scrapeAndFillDB();
 async function scrapeAndFillDB() {
     for (url of urls) {
         const articlesArray = await scrape(url);
-        inputIntoDB(articlesArray);
+        await inputIntoDB(articlesArray);
     }
 }
