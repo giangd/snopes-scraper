@@ -2,14 +2,13 @@ const config = require("../config.json");
 const uri = config.uri;
 const mongoose = require("mongoose");
 const articleSchema = require("./articleSchema.js");
+const collectionName = "article-9-24";
 
 module.exports = async (articlesArray) => {
     await mongoose.connect(uri, {
         useNewUrlParser: true,
         useUnifiedTopology: true,
     });
-
-    const collectionName = "articleTest";
 
     const Article = mongoose.model(collectionName, articleSchema);
 
@@ -20,7 +19,8 @@ module.exports = async (articlesArray) => {
 
         if (isAlreadyIn) {
             console.log("broke");
-            break;
+            // break;
+            continue;
         } else {
             console.log("saved");
             await articleInstance.save();

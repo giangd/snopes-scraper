@@ -2,8 +2,8 @@ const axios = require("axios");
 const cheerio = require("cheerio");
 const fillArticlesArray = require("./fillArticlesArray");
 
-module.exports = async () => {
-    const { data } = await axios.get("https://www.snopes.com/fact-check/");
+module.exports = async (url) => {
+    const { data } = await axios.get(url);
     const $ = cheerio.load(data);
 
     const articlesArray = [];

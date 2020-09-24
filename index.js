@@ -1,9 +1,11 @@
 const scrape = require("./scrape/scrape.js");
+const urls = require("./scrape/urls.js");
 const inputIntoDB = require("./database/inputIntoDB.js");
 
 scrapeAndFillDB();
-
 async function scrapeAndFillDB() {
-    const articlesArray = await scrape();
-    inputIntoDB(articlesArray);
+    for (url of urls) {
+        const articlesArray = await scrape(url);
+        inputIntoDB(articlesArray);
+    }
 }
