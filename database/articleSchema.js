@@ -11,6 +11,7 @@ module.exports = new mongoose.Schema({
     imgLink: { type: String, required: true },
     rating: { type: String, required: true },
     ratingImg: { type: String, required: true },
+    claim: { type: String, required: true },
     ratingDesc: {
         type: {
             whatsTrue: { type: String, required: true },

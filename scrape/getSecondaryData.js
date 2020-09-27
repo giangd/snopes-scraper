@@ -7,13 +7,15 @@ module.exports = async (articlesArray, $) => {
         const res = await axios.get(articlesArray[i].link);
         const { data } = res;
         const $ = cheerio.load(data);
+        const claim = $(".claim > p").first().text();
+
         const mediaList = $(".media-list").first();
 
         let rating = $(mediaList).find(".media-body > h5").text();
 
         const ratingImg = $(mediaList).find("img").attr("src"); // can hard code
-
         const ratingDesc = {};
+
         ratingDesc.whatsTrue = $(mediaList).find(".media.whats-true p").text();
         ratingDesc.whatsFalse = $(mediaList)
             .find(".media.whats-false p")
@@ -22,6 +24,7 @@ module.exports = async (articlesArray, $) => {
             .find(".media.whats-undetermined p")
             .text();
 
+        articlesArray[i].claim = claim;
         articlesArray[i].rating = rating;
         articlesArray[i].ratingImg = ratingImg;
         articlesArray[i].ratingDesc = ratingDesc;

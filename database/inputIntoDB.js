@@ -2,7 +2,8 @@ const config = require("../config.json");
 const uri = config.uri;
 const mongoose = require("mongoose");
 const articleSchema = require("./articleSchema.js");
-const collectionName = "article-9-24";
+
+const collectionName = "aritcles-9-26";
 
 module.exports = async (articlesArray) => {
     await mongoose.connect(uri, {
